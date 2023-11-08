@@ -1,0 +1,7 @@
+DEBUG=True
+
+SECRET_KEY = 'Ara123Via@S'
+SQLALCHEMY_DATABASE_URI = "sqlite:///araviasuport.db"
+SQLALCHEMY_TRACK_MODIFICATIONS = False
+
+colors = "#3e4451"

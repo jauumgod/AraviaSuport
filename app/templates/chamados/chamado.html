@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block dashboard %}
+
+
+<div align="center" class="card col-6 mb-2">
+    <div class="card-body mb-2">
+      <h5 class="card-header">{{result.titulo}}</h5><br>
+      <h6 class="card-subtitle mb-2 text-body-secondary">{{result.aberto_por}}</h6>
+      <p class="card-text">{{result.problema}}</p>
+      <form action="" method="post">
+        <select name="select" class="form-control mb-2">
+          <option value="fechado">Resolvido</option>
+          <option value="fechado">Não Resolvido</option>
+        </select>
+      </form>
+      <a href="#" class="card-link"><button class="btn btn-primary mb-2">Fechar Chamado</button></a>
+
+    </div>
+</div>
+
+
+<style>
+  .card{
+    display: initial;
+
+
+
+  }
+</style>
+
+
+
+
+{% endblock %}

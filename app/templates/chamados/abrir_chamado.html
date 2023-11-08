@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block dashboard %}
+<div>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          
+          {% for message in messages %}
+          <div align="center" class="alert alert-success" role="alert">
+           {{message}}
+          </div>
+          {% endfor %}
+    
+        {% endif %}
+    {% endwith %}
+    </div>
+<div>
+    <h1 align="center"> Abrir Chamado</h1>
+    <div class="container">      
+        <form action="{{url_for('abrir_chamados')}}" method="post">
+            <label class="form-label">Titulo:</label>
+            <input class="form-control" type="text" name="titulo">
+            <label class="form-label">Descreva o problema:</label>
+            <textarea class="form-control mb-2" id="exampleFormControlTextarea1" rows="3" name="problema"></textarea>
+            <label class="form-label">Prioridade:</label>
+            <select name="nivel"  class="form-control mb-2">
+                <option value="baixa">Baixa</option>
+                <option value="media">Media</option>
+                <option value="alta">Alta</option>
+                <option value="urgente">Urgente</option>
+            </select><br>
+            <label for="exampleFormControlFile1">Inserir imagem:</label>
+            <input type="file" class="form-control-file mb-2" name="imagem">
+            <button type="submit" class="btn btn-primary mb-2 ">Abrir Chamado</button>
+        </form>   
+    </div>
+</div>
+
+{% endblock %}

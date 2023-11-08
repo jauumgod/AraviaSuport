@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cad</title>
+</head>
+<body>
+    <div>
+        <h2>create user</h2>
+        <form action="{{url_for('cadastro')}}" method="post">
+            <input type="text" name="username">
+            <input type="password" name="password">
+            <button type="submit">cadastrar</button>
+        </form>
+    </div>
+</body>
+</html>

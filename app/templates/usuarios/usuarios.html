@@ -1,0 +1,127 @@
+{% extends "base.html" %}
+
+{% block dashboard %}
+
+
+<div>
+    <h1 align="center"> Todos Usuarios</h1>
+    <button id="btn-modal" class="btn btn-primary"> Novo Usuario</button>
+    <div class="container"> 
+      <br>    
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Permissão</th>
+                <th scope="col">Modificar</th>
+                <th scope="col">Opções</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for usuario in result %}
+                <tr>
+                  <th scope="row">{{usuario.id}}</th>
+                  <td>{{usuario.username}}</td>
+                    <form action="{{url_for('change_permission', id = usuario.id)}}" method="post">
+                        <td>
+                            <select name="select" class="form-control mb-2">
+                                <option style="color: blue;" value="{{usuario.permissao}}">{{usuario.permissao}}</option>
+                                <option value="Admin">Admin</option>
+                                <option value="Suporte">Suporte</option>
+                                <option value="Usuario">Usuario</option>
+                              </select>
+                        </td>
+                        <td><a href="{{url_for('change_permission', id=usuario.id)}}"><button class="btn btn-primary">alterar</button></a></td>
+                    </form>
+                    
+                  <td><button class="btn btn-primary"><i class='bx bx-cog'><a href=""></a></i></button></td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+    </div>
+    <br>
+    <nav aria-label="Page navigation">
+      <ul class="pagination">
+        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+      </ul>
+    </nav>
+</div>
+
+
+
+
+{% block body %}
+  <dialog>
+      <h1 class="modal-title fs-5" align="center">Novo usuario</h1>
+      <div class="modal-body">
+        <form action="{{url_for('cadastro')}}" method="post">
+          <input class="form-control mb-2" type="text" placeholder="username" name="username">
+          <input class="form-control mb-2" type="email" placeholder="email@example" name="email">
+          <input class="form-control mb-2" type="password" placeholder="password" name="password">
+
+          <select name="select" class="form-control mb-2">
+            <option value="Usuario">Usuario</option>
+            <option value="Admin">Admin</option>
+            <option value="Suporte">Suporte</option>
+          </select>
+          <button type="submit" class="btn btn-primary">Criar</button>
+          <button type="button" class="btn btn-danger" id="close_button">Fechar</button>
+        </form>
+      </div>
+  </dialog>
+
+{% endblock %}
+
+
+<style>
+
+  nav{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  dialog::backdrop{
+    background-color: rbg(0 0 0 /0.5);
+  }
+
+  dialog{
+    align-items: center;
+    width: 400px;
+    height: 300px;
+    position: absolute;
+    left: 50%;
+    top: 50%; 
+    margin-left: -150px;
+    margin-top: -150px;
+    border-radius: 12px;
+    border-color: aliceblue;
+  }
+ .bx{
+    border-radius: 20px;
+ }
+</style>
+
+
+<script>
+  const button = document.getElementById("btn-modal")
+  const modal = document.querySelector("dialog")
+  const buttonClose = document.getElementById("close_button")
+
+  button.onclick = function (){
+    modal.showModal()
+  }
+
+  buttonClose.onclick = function (){
+    modal.close()
+  }
+
+</script>
+
+{% endblock %}

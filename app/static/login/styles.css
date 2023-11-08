@@ -1,0 +1,78 @@
+body{
+    margin: 0px;
+}
+.container-icons{
+    text-align: center;
+
+}
+#div-select{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    border-radius: 8px;
+    font-size: larger;
+    width: 50%;
+}
+#input-group-text{
+    padding: 0 10px;
+}
+
+.form-control{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.select-box{
+    text-align: center;
+    border-radius: 8px;
+    width: 200px;
+}
+select.option{
+    text-align: center;
+    border-radius: 8px;
+}
+
+.container_register{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.plus{
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    position: absolute;
+    margin-left: 95%;
+    top: 90%;
+}
+
+a{
+    text-decoration: none;   
+}
+
+th, tr{
+    text-align: center;
+}
+.square {
+    width: 650px;
+    height: 650px;
+    margin: auto;
+    border: 1px solid black;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.myCanvas{
+    display: block;
+    margin: auto;
+    border: 2px solid black;
+    border-radius: 10px;
+}
