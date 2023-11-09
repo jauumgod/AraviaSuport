@@ -10,7 +10,7 @@ def homepage():
 
 @app.route("/abrir_chamados", methods=['GET', 'POST'])
 @login_required
-def abrir_chamados():
+def abrir_chamados(): 
     if request.method == 'POST':
         chamado = Chamados()
         chamado.titulo = request.form['titulo']

@@ -32,7 +32,7 @@ def login():
                 flash("Limite de usuários com o mesmo ID atingido. Tente novamente mais tarde.")
             else:
                 login_user(user, duration=datetime.timedelta(days=1))
-                usuario_autenticado = UsuarioAutenticado(user_id=user.id, login_time=datetime.datetime.now())
+                usuario_autenticado = UsuarioAutenticado(user_id=user.id, login_time=datetime.datetime.now(), username_logado=user.username )
                 db.session.add(usuario_autenticado)
                 db.session.commit()
                 return redirect(url_for('homepage'))

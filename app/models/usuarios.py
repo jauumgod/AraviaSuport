@@ -9,6 +9,7 @@ class Usuario(db.Model, UserMixin):
     permissao = db.Column(db.String(15), nullable=False)
     active = db.Column(db.Boolean)
 
+
     def is_authenticated(self):
         return True
 
@@ -23,6 +24,6 @@ class Usuario(db.Model, UserMixin):
     
 class UsuarioAutenticado(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('usuario.id'), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('usuario.id'))
     login_time = db.Column(db.DateTime)
-    client_names = db.relationship('Usuario', backref=db.backref('names', lazy=True))
+    username_logado = db.Column(db.String(255))
