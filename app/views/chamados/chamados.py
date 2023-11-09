@@ -1,13 +1,15 @@
 from app import *
 from ...models.chamados import Chamados
 
-@login_required
+
 @app.route("/home")
-def homepage():
+@login_required
+def homepage():    
     return render_template('home/homepage.html')
 
-@login_required
+
 @app.route("/abrir_chamados", methods=['GET', 'POST'])
+@login_required
 def abrir_chamados():
     if request.method == 'POST':
         chamado = Chamados()
@@ -24,7 +26,9 @@ def abrir_chamados():
     return render_template('chamados/abrir_chamado.html')
 
 
+
 @app.route("/chamados")
+@login_required
 def chamados():
     query = Chamados.query.all()
     return render_template('chamados/chamados.html', result=query)
@@ -32,13 +36,25 @@ def chamados():
 
 
 @app.route("/chamados/<int:id>")
+@login_required
 def chamados_id(id):
     query = Chamados.query.filter_by(sequencia_id=id).first()
     return render_template('chamados/chamado.html', result=query)
 
 
 @app.route("/fechados")
+@login_required
 def fechados():
     status = "fechado"
     query = Chamados.query.filter_by(status=status).first()
+    if query == None:
+        query = [{
+            "sequencia_id" : 0,
+            "titulo" : None,
+            "problema": None,
+            "nivel": 0,
+            "data_create": datetime.utcnow(),
+            "aberto_por" : None
+
+        }]
     return render_template("chamados/fechados.html", result=query)

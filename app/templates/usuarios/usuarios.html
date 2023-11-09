@@ -58,12 +58,14 @@
 
 {% block body %}
   <dialog>
+    <div class="modal-header">
       <h1 class="modal-title fs-5" align="center">Novo usuario</h1>
+    </div>
       <div class="modal-body">
         <form action="{{url_for('cadastro')}}" method="post">
-          <input class="form-control mb-2" type="text" placeholder="username" name="username">
-          <input class="form-control mb-2" type="email" placeholder="email@example" name="email">
-          <input class="form-control mb-2" type="password" placeholder="password" name="password">
+          <input class="form-control mb-2" type="text" placeholder="username" name="username" required>
+          <input class="form-control mb-2" type="email" placeholder="email@example" name="email" required>
+          <input class="form-control mb-2" type="password" placeholder="password" name="password" required>
 
           <select name="select" class="form-control mb-2">
             <option value="Usuario">Usuario</option>

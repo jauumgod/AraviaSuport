@@ -4,5 +4,33 @@
 
 <h2 align="center">Configurações</h2>
 <br>
-<label class="form-control">Desconectar clientes</label>
+<label class="form-control" align="center">Desconectar clientes</label>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">id</th>
+        <th scope="col">Nome</th>
+        <th scope="col">Ação</th>
+        <th scope="col">Token</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for user in response %}
+        <tr>
+            <th scope="row">{{user.id}}</th>
+            <td>{{user.user_id}}</td>
+            <td>{{user.username}}</td>
+            <td>{{user.login_time.strftime('%d/%m/%y')}}</td>
+            <td><a href="">{{token}}</a></td>
+            <td><a href="{{url_for('desconectar_usuario',user_id = user.id)}}"><button class="btn btn-outline-secondary">Desconectar</button></a></td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+
+<div>
+
+</div>
 {% endblock %}

@@ -231,7 +231,7 @@
   width: calc(100% - 78px);
   transition: all 0.5s ease;
   z-index: 2;
-  background-color: beige;
+  background-color:#e2e2e2;  /*controla a cor da pagina */
 }
 .sidebar.open ~ .home-section{
   left: 250px;
