@@ -35,7 +35,7 @@
                         <td><a href="{{url_for('change_permission', id=usuario.id)}}"><button class="btn btn-primary">alterar</button></a></td>
                     </form>
                     
-                  <td><button class="btn btn-primary"><i class='bx bx-cog'><a href=""></a></i></button></td>
+                  <td><a href="{{url_for('excluir_usuario', user_id=usuario.id)}}"><button class="btn btn-danger">Delete</button></a></td>
                 </tr>
               {% endfor %}
             </tbody>

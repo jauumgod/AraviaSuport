@@ -2,7 +2,7 @@ from app import *
 from ...models.usuarios import Usuario, UsuarioAutenticado
 import datetime
 
-LIMITE_USUARIOS_POR_ID = 2
+LIMITE_USUARIOS_POR_ID = 3
 
 login_manager = LoginManager(app)
 
@@ -102,4 +102,4 @@ def excluir_usuario(user_id):
         db.session.commit()
         flash("Usuário removido com sucesso.")
         time.sleep(1)
-    return redirect(url_for('configurations'))
+    return redirect(url_for('usuarios'))

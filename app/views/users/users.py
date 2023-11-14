@@ -22,3 +22,4 @@ def change_permission(id):
         time.sleep(1)
         
     return redirect(url_for("usuarios"))
+

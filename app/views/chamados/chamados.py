@@ -2,6 +2,7 @@ from app import *
 from ...models.chamados import Chamados
 
 
+
 @app.route("/home")
 @login_required
 def homepage():    
@@ -58,3 +59,15 @@ def fechados():
 
         }]
     return render_template("chamados/fechados.html", result=query)
+
+
+@app.route("/assumir_chamados/<int:id>")
+def assumir_chamados(id):
+    chamados_query = Chamados.query.filter_by(sequencia_id = id).first()
+    chamados_query.assumido_por = current_user.username
+    db.session.add(chamados)
+    db.session.commit()
+    flash(f"Chamado por {current_user.username}, assumido com sucesso!")
+
+    return redirect(url_for("chamados_id", id=id))
+

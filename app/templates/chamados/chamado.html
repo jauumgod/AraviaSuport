@@ -3,32 +3,36 @@
 {% block dashboard %}
 
 
-<div align="center" class="card col-6 mb-2">
+<div class="card col-6 mb-2">
     <div class="card-body mb-2">
       <h5 class="card-header">{{result.titulo}}</h5><br>
       <h6 class="card-subtitle mb-2 text-body-secondary">{{result.aberto_por}}</h6>
       <p class="card-text">{{result.problema}}</p>
+      <label class="mb-2"> Assumido:</label>
       <form action="" method="post">
         <select name="select" class="form-control mb-2">
           <option value="fechado">Resolvido</option>
           <option value="fechado">Não Resolvido</option>
         </select>
       </form>
+      <a href="{{url_for('assumir_chamados', id=result.sequencia_id)}}" class="card-link"><button class="btn btn-success mb-2">Assumir Chamado</button></a>
       <a href="#" class="card-link"><button class="btn btn-primary mb-2">Fechar Chamado</button></a>
-
     </div>
+  <div>
+    <label class="mb-2">Comentário:</label>
+    <textarea class="form-control mb-2" id="exampleFormControlTextarea1" rows="3" name="problema"></textarea>
+  </div>
 </div>
-
 
 <style>
   .card{
     display: initial;
+    align-content: center;
 
 
 
   }
 </style>
-
 
 
 
