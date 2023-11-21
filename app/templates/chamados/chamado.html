@@ -16,7 +16,7 @@
         </select>
       </form>
       <a href="{{url_for('assumir_chamados', id=result.sequencia_id)}}" class="card-link"><button class="btn btn-success mb-2">Assumir Chamado</button></a>
-      <a href="#" class="card-link"><button class="btn btn-primary mb-2">Fechar Chamado</button></a>
+      <a href="{{url_for('fechar_chamados', id=result.sequencia_id)}}" class="card-link"><button class="btn btn-primary mb-2">Fechar Chamado</button></a>
     </div>
   <div>
     <label class="mb-2">Comentário:</label>

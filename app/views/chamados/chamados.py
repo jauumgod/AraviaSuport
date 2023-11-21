@@ -46,28 +46,31 @@ def chamados_id(id):
 @app.route("/fechados")
 @login_required
 def fechados():
-    status = "fechado"
-    query = Chamados.query.filter_by(status=status).first()
-    if query == None:
-        query = [{
-            "sequencia_id" : 0,
-            "titulo" : None,
-            "problema": None,
-            "nivel": 0,
-            "data_create": datetime.utcnow(),
-            "aberto_por" : None
-
-        }]
+    query = Chamados.query.filter(Chamados.fechado_por!= "").all()
     return render_template("chamados/fechados.html", result=query)
 
 
 @app.route("/assumir_chamados/<int:id>")
 def assumir_chamados(id):
+    ch = Chamados()
     chamados_query = Chamados.query.filter_by(sequencia_id = id).first()
     chamados_query.assumido_por = current_user.username
-    db.session.add(chamados)
+    db.session.add(chamados_query)
     db.session.commit()
     flash(f"Chamado por {current_user.username}, assumido com sucesso!")
+    redirect(url_for('chamados'))
+    return redirect(url_for("chamados_id", id=id))
+
+@app.route("/fechar_chamados/<int:id>")
+def fechar_chamados(id):
+    ch = Chamados()
+    chamados_query = Chamados.query.filter_by(sequencia_id = id).first()
+    chamados_query.fechado_por = current_user.username
+    db.session.add(chamados_query)
+    db.session.commit()
+    flash(f" Chamado fechado com sucesso!")
+    redirect(url_for('chamados'))
 
     return redirect(url_for("chamados_id", id=id))
+
 
